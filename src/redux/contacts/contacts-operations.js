@@ -41,12 +41,12 @@ const addContacts = (name, number) => (dispatch) => {
     .catch((error) => dispatch(addContactsError(error)));
 };
 
-const deleteContacts = (name) => (dispatch) => {
+const deleteContacts = (id) => (dispatch) => {
   dispatch(deleteContactsRequest());
 
   axios
-    .delete(`/contacts/${name}`)
-    .then(() => dispatch(deleteContactsSuccess(name)))
+    .delete(`/contacts/${id}`)
+    .then(() => dispatch(deleteContactsSuccess(id)))
     .catch((error) => dispatch(deleteContactsError(error)));
 };
 
