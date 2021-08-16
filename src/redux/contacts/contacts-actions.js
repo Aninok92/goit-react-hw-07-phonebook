@@ -1,18 +1,23 @@
-import { createAction, nanoid } from "@reduxjs/toolkit";
+import { createAction } from "@reduxjs/toolkit";
 
-const addContact = createAction("contacts/add", function prepare(name, number) {
-  return {
-    payload: {
-      id: nanoid(),
-      name,
-      number,
-    },
-  };
-});
+export const fetchContactsRequest = createAction(
+  "contacts/fetchContactsRequest"
+);
+export const fetchContactsSuccess = createAction(
+  "contacts/fetchContactsSuccess"
+);
+export const fetchContactsError = createAction("contacts/fetchContactsError");
 
-const deleteContact = createAction("contacts/delete");
+export const addContactsRequest = createAction("contacts/addContactsRequest");
+export const addContactsSuccess = createAction("contacts/addContactsSuccess");
+export const addContactsError = createAction("contacts/addContactsError");
 
-const changeFilter = createAction("contacts/changeFilter");
+export const deleteContactsRequest = createAction(
+  "contacts/deleteContactsRequest"
+);
+export const deleteContactsSuccess = createAction(
+  "contacts/deleteContactsSuccess"
+);
+export const deleteContactsError = createAction("contacts/deleteContactsError");
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default { addContact, deleteContact, changeFilter };
+export const changeFilter = createAction("contacts/changeFilter");
