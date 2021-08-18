@@ -44,7 +44,7 @@ function ContactForm() {
       return;
     }
 
-   dispatch(contactsOperations.addContacts(name, number));
+    dispatch(contactsOperations.addContacts(name, number));
     reset();
   };
 
@@ -65,6 +65,7 @@ function ContactForm() {
           type="text"
           name="name"
           value={name}
+          placeholder="Adrian"
           onChange={handleChange}
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
@@ -79,6 +80,7 @@ function ContactForm() {
           type="tel"
           name="number"
           value={number}
+          placeholder="123-456-789"
           onChange={handleChange}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
@@ -86,7 +88,7 @@ function ContactForm() {
           id={numberInputId}
         />
       </label>
-      <button type="submit" className={s.button}>
+      <button type="submit" className={s.button} disabled={!name || !number}>
         Add Contact
       </button>
     </form>

@@ -1,6 +1,5 @@
 import { combineReducers } from "redux";
 import { createReducer } from "@reduxjs/toolkit";
-//import action from "./contacts-actions";
 import {
   addContactsRequest,
   addContactsSuccess,
@@ -20,8 +19,6 @@ const items = createReducer([], {
   [deleteContactsSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
 });
-
-console.log(items);
 
 const loading = createReducer(false, {
   [fetchContactsRequest]: () => true,

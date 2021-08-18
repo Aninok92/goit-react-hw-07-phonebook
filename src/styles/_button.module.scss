@@ -7,10 +7,18 @@
   transition: all var(--transition-duration) var(--transition-timing-function);
 
   &:hover {
-    background: var(--focus-color);
+    &:not([disabled]) {
+      background: var(--focus-color);
+    }
   }
 
   &:focus {
-    box-shadow: 0 0 0 4px #cbd6ee;
+    &:not([disabled]) {
+      box-shadow: 0 0 0 4px #cbd6ee;
+    }
+  }
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
   }
 }
