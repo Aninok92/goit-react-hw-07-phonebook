@@ -44,7 +44,7 @@ function ContactForm() {
       return;
     }
 
-    dispatch(contactsOperations.addContacts(name, number));
+    dispatch(contactsOperations.addContacts({ name, number }));
     reset();
   };
 
