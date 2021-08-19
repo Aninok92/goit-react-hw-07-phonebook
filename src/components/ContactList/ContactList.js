@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useEffect } from "react";
 import { ImBin } from "react-icons/im";
 import { useSelector, useDispatch } from "react-redux";
 import { getVisibleContacts } from "../../redux/contacts/contacts-selectors";
@@ -13,16 +14,21 @@ const ContactList = () => {
   const onDeleteContact = (id) =>
     dispatch(contactsOperations.deleteContacts(id));
 
+  useEffect(() => {
+    dispatch(contactsOperations.fetchContacts());
+  }, [dispatch]);
+
   return (
     <ul className={s.list}>
-      {contacts.map(({ id, name, number }) => (
-        <li className={s.item} key={id}>
-          <ContactItem name={name} number={number} />
-          <Button onClick={() => onDeleteContact(id)}>
-            <ImBin /> Delete
-          </Button>
-        </li>
-      ))}
+      {contacts.length > 0 &&
+        contacts.map(({ id, name, number }) => (
+          <li className={s.item} key={id}>
+            <ContactItem name={name} number={number} />
+            <Button onClick={() => onDeleteContact(id)}>
+              <ImBin /> Delete
+            </Button>
+          </li>
+        ))}
     </ul>
   );
 };
