@@ -5,7 +5,7 @@ import { changeFilter } from "./contacts-actions";
 import contactsOperations from "./contacts-operations";
 
 const items = createReducer([], {
-  [contactsOperations.fetchContacts.fulfilled]: (_, payload) => payload,
+  [contactsOperations.fetchContacts.fulfilled]: (_, { payload }) => payload,
   [contactsOperations.addContacts.fulfilled]: (state, { payload }) => [
     payload,
     ...state,

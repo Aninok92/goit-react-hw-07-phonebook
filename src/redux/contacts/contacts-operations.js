@@ -5,11 +5,15 @@ import { nanoid } from "nanoid";
 
 axios.defaults.baseURL = "http://localhost:3004";
 
+const getContacts = () => {
+  return axios.get("/contacts");
+};
+
 const fetchContacts = createAsyncThunk(
   "contacts/fetchContacts",
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get("/contacts")();
+      const { data } = await getContacts();
       return data;
     } catch (error) {
       return rejectWithValue(error.response);
